@@ -201,49 +201,70 @@ class ViewController: UIViewController {
 //    aqui termina
     @IBAction func sumar() {
         numero1 = label1.text
-        if numero1.last == "+" {
+        if numero1.contains("+") || numero1.contains("-") || numero1.contains("*") || numero1.contains("%") {
             
         } else {
-            label1.text = label1.text! + "+"
+            label1.text = label1.text! + " + "
         }
         count = 1
     }
     @IBAction func restar() {
         numero1 = label1.text
-        if numero1.last == "-" {
+        if numero1.contains("+") || numero1.contains("-") || numero1.contains("*") || numero1.contains("%") {
             
         } else {
-            label1.text = label1.text! + "-"
+            label1.text = label1.text! + " - "
         }
         count = 2
     }
     @IBAction func mutli() {
         numero1 = label1.text
-        if numero1.last == "*" {
+        if numero1.contains("+") || numero1.contains("-") || numero1.contains("*") || numero1.contains("%") {
             
         } else {
-            label1.text = label1.text! + "*"
+            label1.text = label1.text! + " * "
         }
         count = 3
     }
     @IBAction func div() {
         numero1 = label1.text
-        if numero1.last == "%" {
+        if numero1.contains("+") || numero1.contains("-") || numero1.contains("*") || numero1.contains("%") {
             
         } else {
-            label1.text = label1.text! + "%"
+            label1.text = label1.text! + " % "
         }
         count = 4
     }
 //    cuando pulsamos el igual se ejecuta un condicional el cual decidira según la variable count que operación realizar
     @IBAction func igual() {
+//        pruebas de obtencion del ultimo numero
+        var text = label1.text
         
+        let n2 = textLabel1.components(separatedBy: " ")
+        print(n2)
+        let n3 = textLabel1.split(separator: " ")
+        print(n3)
+        let n4 = textLabel1.last
+        print(n4)
+        print(textLabel1)
+        print(label1.text)
         
+        let n21 = text!.components(separatedBy: " ")
+        print(n21)
+        let n31 = text!.split(separator: " ")
+        print(n31)
+        let n41 = text!.last
+        print(n41)
+        
+        var x = n21.last!
+        print(x)
+        
+        numero2 = x
         
         if numero1 != "" && count == 1 && numero2 != "" {
             numeroTotal = Double(numero1)! + Double(numero2)!
             label1.text = String(numeroTotal)
-        } else if numero1 == "" && count == 1 && numero2 == ""{
+        } else if numero1 == "" && count == 1 && numero2 == "" {
             label1.text = "0"
         }
         if numero1 != "" && count == 2 && numero2 != "" {
@@ -268,29 +289,5 @@ class ViewController: UIViewController {
     @IBAction func activarC() {
         label1.text = "0"
     }
-    
-////    la funcion setArray() meterá los distintos valores de un String en nuestro array de cadenas
-//    func setArray() {
-//        var text1 = label1.text
-//        numero2.append()
-//    }
-//    func segundoNumero(cadena: String) -> String {
-//        print(count)
-////        utilizar switch and case para evaluar todos los casos y devolver el valor apropiado.
-//        if count == 1 {
-//
-//            numero2Array =  cadena.components(separatedBy: "+")
-//            print(numero2Array[0])
-//            numero2 = numero2Array[0]
-//        }
-//        return numero2
-//    }
-    
-    
-//    esta funcion recoge una cadena y devuelve su último caracter
-//    func ultimoValor(cadena: String) -> Character {
-//        let cadena1 = cadena.last
-//        return cadena1!
-//    }
 }
 
