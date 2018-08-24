@@ -104,7 +104,7 @@ class ViewController: UIViewController {
         buttonSame.layer.cornerRadius = 30
         buttonSame.backgroundColor = naranja
         buttonSame.tintColor = blanco
-        
+        label1.font = UIFont(name: "Helvetica", size: 35)
     }
 
     override func didReceiveMemoryWarning() {
@@ -201,7 +201,7 @@ class ViewController: UIViewController {
 //    aqui termina
     @IBAction func sumar() {
         numero1 = label1.text
-        if numero1.contains("+") || numero1.contains("-") || numero1.contains("*") || numero1.contains("%") {
+        if numero1.contains("+") || numero1.last == "-" || numero1.contains("*") || numero1.contains("%") {
             
         } else {
             label1.text = label1.text! + " + "
@@ -210,16 +210,21 @@ class ViewController: UIViewController {
     }
     @IBAction func restar() {
         numero1 = label1.text
-        if numero1.contains("+") || numero1.contains("-") || numero1.contains("*") || numero1.contains("%") {
+        let x = String(numero1.first!)
+        if numero1.contains("+") || numero1.last == "-" || numero1.contains("*") || numero1.contains("%") {
             
-        } else {
+        } else if x == "0" {
+            label1.text!.removeFirst()
+            label1.text = label1.text! + " - "
+//            cuando se va a realizar la operacion con un numero negativo primero da error ya que son 4 elementos en el array y no esta preparado para mas de 3 elementos en el array, 2 num y un operador.
+        }else{
             label1.text = label1.text! + " - "
         }
         count = 2
     }
     @IBAction func mutli() {
         numero1 = label1.text
-        if numero1.contains("+") || numero1.contains("-") || numero1.contains("*") || numero1.contains("%") {
+        if numero1.contains("+") || numero1.last == "-" || numero1.contains("*") || numero1.contains("%") {
             
         } else {
             label1.text = label1.text! + " * "
@@ -228,7 +233,7 @@ class ViewController: UIViewController {
     }
     @IBAction func div() {
         numero1 = label1.text
-        if numero1.contains("+") || numero1.contains("-") || numero1.contains("*") || numero1.contains("%") {
+        if numero1.contains("+") || numero1.last == "-" || numero1.contains("*") || numero1.contains("%") {
             
         } else {
             label1.text = label1.text! + " % "
@@ -289,5 +294,10 @@ class ViewController: UIViewController {
     @IBAction func activarC() {
         label1.text = "0"
     }
+    @IBAction func quitarUltimo() {
+        if label1.text!.isEmpty{
+            label1.text = "00"
+        }
+        label1.text?.removeLast()
+    }
 }
-
