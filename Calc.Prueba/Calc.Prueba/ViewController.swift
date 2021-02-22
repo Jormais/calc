@@ -240,6 +240,19 @@ class ViewController: UIViewController {
         }
         count = 4
     }
+    
+//    func validate(_ string) -> Bool {
+//        //
+//    }
+//    
+//    func calculate(_ string: String) -> Double {
+//        //
+//    }
+//    
+//    func extractNextCalculation(_ String) -> String {
+//        
+//    }
+    
 //    cuando pulsamos el igual se ejecuta un condicional el cual decidira según la variable count que operación realizar
     @IBAction func igual() {
 //        pruebas de obtencion del ultimo numero
@@ -263,12 +276,15 @@ class ViewController: UIViewController {
         
         var x = n21.last!
         print(x)
-        
+        // 
         numero2 = x
         
         if numero1 != "" && count == 1 && numero2 != "" {
-            numeroTotal = Double(numero1)! + Double(numero2)!
-            label1.text = String(numeroTotal)
+            if let num1Double = Double(self.deleteSpaces(numero1)),
+                let num2Double = Double(self.deleteSpaces(numero2)) {
+                numeroTotal = num1Double + num2Double
+                label1.text = String(numeroTotal)
+            }
         } else if numero1 == "" && count == 1 && numero2 == "" {
             label1.text = "0"
         }
@@ -291,6 +307,17 @@ class ViewController: UIViewController {
             label1.text = "0"
         }
     }
+    
+    private func deleteSpaces(_ string: String) -> String {
+        var stringMut = string
+        while stringMut.index(of: " ") != nil {
+            if let spaceIndex = stringMut.index(of: " ") {
+                stringMut.remove(at: spaceIndex)
+            }
+        }
+        return stringMut
+    }
+    
     @IBAction func activarC() {
         label1.text = "0"
     }
